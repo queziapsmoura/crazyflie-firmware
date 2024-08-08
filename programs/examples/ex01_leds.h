@@ -4,6 +4,7 @@
 // Define red LED (right) as digital output object
 DigitalOut led(LED_RED_R,!false);
 
+
 // Main program
 int main()
 {
