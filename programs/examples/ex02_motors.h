@@ -11,9 +11,9 @@ int main()
     // Turn motor on (20% power) and off every second
     while(true) 
     {
-        motor = 0.2;
+        motor = 0.1;
         wait(0.5);
-        motor = 0.0;
-        wait(0.5);
+        // motor = 0.0;
+        // wait(0.5);
     }
 }
