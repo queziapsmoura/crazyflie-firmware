@@ -8,7 +8,6 @@
 
 // Chapters
 // #include "programs/chapters/ch01.h"
-#include "programs/chapters/ch02.h"
 #include "programs/chapters/ch03.h"
 #include "programs/chapters/ch03_implementacao.h"
 #include "programs/chapters/ch04.h"
