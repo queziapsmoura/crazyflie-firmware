@@ -18,5 +18,5 @@ const float a1 = 2.4234e-10;    // Cte que multiplica w  (p2)
 const float a2 = 1.4902e-07;    // Cte que multiplica w² (p1)
 
 const float kl =1.8798e-08;    // N.s²  Cte de sustentação (Cte que multiplica w²) (p1)
-const float kd =1.5292e-10;    // N.m.s² 
+const float kd =1.5292e-10;    // N.m.s² Cte de arrasto
 #endif
