@@ -21,10 +21,47 @@ float control_motor(float omega)
 
 
 void mixer(float f_t, float thau_phi, float thau_theta, float thau_psi){
-    omega_1 =  f_t*(1/4*kl) - thau_phi*(1/4*kl*l) - thau_theta*(1/4*kl*l) - thau_psi*(1/4*kl);
-    omega_2 =  f_t*(1/4*kl) - thau_phi*(1/4*kl*l) + thau_theta*(1/4*kl*l) + thau_psi*(1/4*kl);
-    omega_3 =  f_t*(1/4*kl) + thau_phi*(1/4*kl*l) + thau_theta*(1/4*kl*l) - thau_psi*(1/4*kl);
-    omega_4 =  f_t*(1/4*kl) + thau_phi*(1/4*kl*l) - thau_theta*(1/4*kl*l) + thau_psi*(1/4*kl);
+    float o_1 =  f_t/(4.0*kl) - thau_phi/(4.0*kl*l) - thau_theta/(4.0*kl*l) - thau_psi/(4.0*kl);
+    float o_2 =  f_t/(4.0*kl) - thau_phi/(4.0*kl*l) + thau_theta/(4.0*kl*l) + thau_psi/(4.0*kl);
+    float o_3 =  f_t/(4.0*kl) + thau_phi/(4.0*kl*l) + thau_theta/(4.0*kl*l) - thau_psi/(4.0*kl);
+    float o_4 =  f_t/(4.0*kl) + thau_phi/(4.0*kl*l) - thau_theta/(4.0*kl*l) + thau_psi/(4.0*kl);
+
+    if (o_1 > 0)
+    {
+        omega_1 = sqrt(o_1);
+    }
+    else
+    {
+        omega_1 = 0;
+    }
+    /////
+        if (o_2 > 0)
+    {
+        omega_2 = sqrt(o_2);
+    }
+    else
+    {
+        omega_2 = 0;
+    }
+    //////
+        if (o_3 > 0)
+    {
+        omega_3 = sqrt(o_3);
+    }
+    else
+    {
+        omega_3 = 0;
+    }
+    /////
+        if (o_4 > 0)
+    {
+        omega_4 = sqrt(o_4);
+    }
+    else
+    {
+        omega_4 = 0;
+    }
+
 }
 
 void actuate(float f_t, float thau_phi, float thau_theta, float thau_psi){
