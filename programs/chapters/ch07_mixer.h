@@ -21,10 +21,10 @@ float control_motor(float omega)
 
 
 void mixer(float f_t, float thau_phi, float thau_theta, float thau_psi){
-    float o_1 =  f_t/(4.0*kl) - thau_phi/(4.0*kl*l) - thau_theta/(4.0*kl*l) - thau_psi/(4.0*kl);
-    float o_2 =  f_t/(4.0*kl) - thau_phi/(4.0*kl*l) + thau_theta/(4.0*kl*l) + thau_psi/(4.0*kl);
-    float o_3 =  f_t/(4.0*kl) + thau_phi/(4.0*kl*l) + thau_theta/(4.0*kl*l) - thau_psi/(4.0*kl);
-    float o_4 =  f_t/(4.0*kl) + thau_phi/(4.0*kl*l) - thau_theta/(4.0*kl*l) + thau_psi/(4.0*kl);
+    float o_1 =  f_t/(4.0*kl) - thau_phi/(4.0*kl*l) - thau_theta/(4.0*kl*l) - thau_psi/(4.0*kd);
+    float o_2 =  f_t/(4.0*kl) - thau_phi/(4.0*kl*l) + thau_theta/(4.0*kl*l) + thau_psi/(4.0*kd);
+    float o_3 =  f_t/(4.0*kl) + thau_phi/(4.0*kl*l) + thau_theta/(4.0*kl*l) - thau_psi/(4.0*kd);
+    float o_4 =  f_t/(4.0*kl) + thau_phi/(4.0*kl*l) - thau_theta/(4.0*kl*l) + thau_psi/(4.0*kd);
 
     if (o_1 > 0)
     {
@@ -67,8 +67,8 @@ void mixer(float f_t, float thau_phi, float thau_theta, float thau_psi){
 void actuate(float f_t, float thau_phi, float thau_theta, float thau_psi){
     mixer(f_t,thau_phi, thau_theta, thau_psi);
     motor1 = control_motor(omega_1);
-    motor3 = control_motor(omega_2);
-    motor2 = control_motor(omega_3);
+    motor2 = control_motor(omega_2);
+    motor3 = control_motor(omega_3);
     motor4 = control_motor(omega_4);
 }
 
@@ -81,7 +81,7 @@ int main()
     motor3.period(1.0/500.0);
     motor4.period(1.0/500.0);
 
-    actuate(0.5*m*g,0,0,0);
+    actuate(0.15,0,0,0.001);
     wait(5);
     actuate(0,0,0,0);
     while(true)
