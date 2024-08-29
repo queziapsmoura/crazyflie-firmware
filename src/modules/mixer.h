@@ -15,4 +15,6 @@ private:
     void mixer(float f_t, float thau_phi, float thau_theta, float thau_psi);
     float control_motor(float omega);
 
-}
+};
+
+#endif
