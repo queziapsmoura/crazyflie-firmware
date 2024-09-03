@@ -13,7 +13,7 @@ public:
     void actuate(float f_t, float thau_phi, float thau_theta, float thau_psi);
 private:
     bool armed;
-    DigitalOut led_red, led_green;
+    DigitalOut led_red, led_blue, led_green_left, led_green_right;
     PwmOut motor_1, motor_2, motor_3, motor_4;
     float omega_1, omega_2, omega_3, omega_4;
     void mixer(float f_t, float thau_phi, float thau_theta, float thau_psi);

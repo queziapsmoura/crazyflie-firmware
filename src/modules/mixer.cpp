@@ -1,6 +1,6 @@
 #include "mixer.h"
 
-Mixer::Mixer():motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4), led_red(LED_RED_R), led_green(LED_GREEN_L)
+Mixer::Mixer():motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4), led_red(LED_RED_R), led_green_left(LED_GREEN_L),led_green_right(LED_GREEN_R),  led_blue(LED_BLUE_L)
 {
     motor_1.period(1.0/500.0);
     motor_2.period(1.0/500.0);
@@ -11,8 +11,10 @@ Mixer::Mixer():motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4
     motor_3 = 0.0;
     motor_4 = 0.0;
     armed =  false;
-    led_red = false;   // Desligado - NF
-    led_green = true;  // Ligado - NA
+    led_red = true;             // Desligado - NA
+    led_green_left = true;      // Desligado - NA
+    led_green_right = true;     // Desligado - NA
+    led_blue = false;           // Desligado - NF
 }
 void Mixer:: actuate(float f_t, float thau_phi, float thau_theta, float thau_psi)
 {
@@ -86,9 +88,9 @@ void Mixer:: arm(){
     //pausa depois das notas
     int pausadepoisdasnotas[] ={150,300,300,100,300,550,575,450,400,500,300,330,150,300,200,200,150,300,150,350,300,150,150,500,450,400,500,300,330,150,300,200,200,150,300,150,350,300,150,150,500,300,100,150,150,300,300,150,150,300,150,100,220,300,100,150,150,300,300,300,150,300,300,300,100,150,150,300,300,150,150,300,150,100,420,450,420,360,300,300,150,300,300,100,150,150,300,300,150,150,300,150,100,220,300,100,150,150,300,300,300,150,300,300,300,100,150,150,300,300,150,150,300,150,100,420,450,420,360,300,300,150,300,150,300,350,150,350,150,300,150,600,150,300,350,150,150,550,325,600,150,300,350,150,350,150,300,150,600,150,300,300,100,300,550,575};
 
-    //for para tocar as 156 notas começando no 0 ate 156 ++ incrementado - Música Completa
-    // for para tocar as 6 notas começando no 0 ate 6 ++ incrementado - Toque Inicial
-    for (int nota = 0; nota < 156; nota++) {
+    //for para tocar as 156 notas começando no 0 ate < 156 ++ incrementado - Música Completa
+    // for para tocar as 6 notas começando no 0 ate < 6 ++ incrementado - Toque Inicial
+    for (int nota = 0; nota < 6; nota++) {
         float duracaodanota = duracaodasnotas[nota]/2000.00;
         float pausa = pausadepoisdasnotas[nota]/2000.00;
         float periodo = melodia[nota];
@@ -100,30 +102,47 @@ void Mixer:: arm(){
         motor_2 = 0.1;
         motor_3 = 0.1;
         motor_4 = 0.1;
+        led_green_right = !led_green_right;
+        led_green_left = !led_green_left;
+
         wait(duracaodanota);
         motor_1 = 0;
         motor_2 = 0;
         motor_3 = 0;
         motor_4 = 0;
+        led_green_right = !led_green_right;
+        led_green_left = !led_green_left;
         wait(pausa);
     }
 
+
     for (int i=0; i<20; i++)
     {        
-        // Blink red LEDs indicating motor arm
+        // Blink red LEDs indicating - motor armed
         led_red = !led_red;
         wait(0.25);  
     }
-    armed = true;
-    // Led vermelho - ligado
+
+    // Led vermelho - ligado - "Perigoso" Mexer no Drone
     led_red = false;
+    armed = true;
 }
 
 void Mixer:: disarm(){
     actuate(0, 0, 0, 0);
     // Led vermelho - Desligada 
     led_red = true;
-    // Led verde - ligado
-    led_green = false;
+
+    // Transição para finalização
+    // Led azul - Ligado 
+    led_blue = true;
+    wait(1);
+    // Led azul - Desligado 
+    led_blue = false;
+
+
+    // Led verde - ligado - "Seguro" Mexer no Drone
+    led_green_left = false;
+    led_green_right = false;
     armed = false;
 }
