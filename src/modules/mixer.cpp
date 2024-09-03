@@ -11,6 +11,8 @@ Mixer::Mixer():motor_1(MOTOR1), motor_2(MOTOR2), motor_3(MOTOR3), motor_4(MOTOR4
     motor_3 = 0.0;
     motor_4 = 0.0;
     armed =  false;
+
+    // Configuração inicial - LEDs
     led_red = true;             // Desligado - NA
     led_green_left = true;      // Desligado - NA
     led_green_right = true;     // Desligado - NA
@@ -102,6 +104,7 @@ void Mixer:: arm(){
         motor_2 = 0.1;
         motor_3 = 0.1;
         motor_4 = 0.1;
+        // Para piscar LEDs verdes música
         led_green_right = !led_green_right;
         led_green_left = !led_green_left;
 
@@ -110,6 +113,7 @@ void Mixer:: arm(){
         motor_2 = 0;
         motor_3 = 0;
         motor_4 = 0;
+        // Para piscar LEDs verdes música
         led_green_right = !led_green_right;
         led_green_left = !led_green_left;
         wait(pausa);
@@ -123,7 +127,7 @@ void Mixer:: arm(){
         wait(0.25);  
     }
 
-    // Led vermelho - ligado - "Perigoso" Mexer no Drone
+    // LED vermelho - ligado - "Perigoso" mexer no Drone
     led_red = false;
     armed = true;
 }
@@ -141,7 +145,7 @@ void Mixer:: disarm(){
     led_blue = false;
 
 
-    // Led verde - ligado - "Seguro" Mexer no Drone
+    // LED's verdes - ligado - "Seguro" mexer no Drone
     led_green_left = false;
     led_green_right = false;
     armed = false;
