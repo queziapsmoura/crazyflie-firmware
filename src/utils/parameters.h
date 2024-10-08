@@ -20,7 +20,7 @@ const float a2 = 1.4902e-07;    // Cte que multiplica w² (p1)
 const float kl =1.8798e-08;    // N.s²  Cte de sustentação (Cte que multiplica w²) (p1)
 const float kd =1.5292e-10;    // N.m.s² Cte de arrasto
 const float dt = 2e-3 ;        // Frequência de amostragem
-const float wc = 10.0;
+const float wc = 1.0;
 const float alpha = (wc*dt)/(1.0+wc*dt);
 
 #endif
