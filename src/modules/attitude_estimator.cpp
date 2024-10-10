@@ -34,7 +34,7 @@ void AttitudeEstimator::estimate ()
     // phi_a : phi do aceçerometro
     // atan2: Para saber em qual quadrante o ângulo está
     float phi_a = atan2(-imu.ay,-imu.az);
-    float theta_a = atan2(imu.ax,((imu.az>0)-(imu.az<0))*sqrt((imu.ay)*(imu.ay)+(imu.az)*(imu.az)));
+    float theta_a = atan2(imu.ax,-((imu.az>0)-(imu.az<0))*sqrt((imu.ay)*(imu.ay)+(imu.az)*(imu.az)));
     //phi = (1-alpha)*phi + alpha*phi_a;
     p = imu.gx - p_bias;
     q = imu.gy - q_bias;
@@ -44,7 +44,6 @@ void AttitudeEstimator::estimate ()
     float psi_g = psi + (sin(phi)/cos(theta)*q+cos(phi)/cos(theta)*r)*dt;
     //phi = phi_g;
     //phi = (1-alpha)*phi_g;
-
 
     phi = (1-alpha)*phi_g + alpha*phi_a;
     theta = (1-alpha)*theta_g + alpha*theta_a;
