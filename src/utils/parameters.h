@@ -23,4 +23,13 @@ const float dt = 2e-3 ;        // Frequência de amostragem
 const float wc = 1.0;
 const float alpha = (wc*dt)/(1.0+wc*dt);
 
+const float Ts = 0.5;
+const float OS = 0.005;
+
+const float zeta = abs(log(OS))/(sqrt(pi*pi+log(OS)*log(OS)));
+const float wn = 4.0/(Ts*zeta);
+
+const float Kp = wn*wn;
+const float Kd = 2.0*zeta*wn;
+
 #endif
