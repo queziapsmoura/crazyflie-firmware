@@ -34,8 +34,10 @@ const float Kd = 2.0*zeta*wn;
 
 
 // Estimador de Altitude Vertical
-const float l1_v = 1;
 const float wc_v = 10;
+const float zeta_v = sqrt(2)/2;
 const float dt_v = 50e-3;
+const float l1_v = wc_v*wc_v;
+const float l2_v = 2*zeta_v*wc_v;
 
 #endif
