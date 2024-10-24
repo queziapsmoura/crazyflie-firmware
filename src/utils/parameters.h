@@ -29,19 +29,6 @@ const float dt = 2e-3 ;        // Frequência de amostragem
 const float wc = 1.0;
 const float alpha = (wc*dt)/(1.0+wc*dt);
 
-<<<<<<< HEAD
-const float Ts = 0.5;
-const float OS = 0.005;
-
-const float zeta = abs(log(OS))/(sqrt(pi*pi+log(OS)*log(OS)));
-const float wn = 4.0/(Ts*zeta);
-
-// Para o controle de Atitude
-const float Kp = wn*wn;
-const float Kd = 2.0*zeta*wn;
-
-// Estimador de Altitude Vertical
-=======
 // Controlador de atitude
 const float Ts_phi = 0.3;
 const float OS_phi = 0.005;
@@ -58,23 +45,12 @@ const float kp_psi = wn_psi*wn_psi;
 const float kd_psi = 2.0*zeta_phi*wn_psi;
 
 // Estimador  Vertical
->>>>>>> 3311af795f77b75b17857258ac2a73296dbff57c
-const float wc_v = 10;
-const float zeta_v = sqrt(2)/2;
-const float dt_v = 50e-3;
+const float wc_v = 10.0;
+const float zeta_v = sqrt(2.0)/2.0;
+const float dt_v = 50.0e-3;
 const float l1_v = wc_v*wc_v;
-const float l2_v = 2*zeta_v*wc_v;
+const float l2_v = 2.0*zeta_v*wc_v;
 
-<<<<<<< HEAD
-// Kp_v e Kd_v para controle de Altitude Vertical
-const float Ts_v = 0.5;
-const float OS_v = 0.005;
-
-const float wn_v = 4.0/(Ts*zeta);
-
-const float Kp_v = wn_v*wn_v;
-const float Kd_v = 2.0*zeta*wn_v;
-=======
 // Controle Vertical
 const float Ts_ver = 2.0;
 const float OS_ver = 0.005;
@@ -83,5 +59,4 @@ const float wn_ver = 4.0/(Ts_ver*zeta_ver);
 const float kp_ver = wn_ver*wn_ver;
 const float kd_ver = 2.0*zeta_ver*wn_ver;
 
->>>>>>> 3311af795f77b75b17857258ac2a73296dbff57c
 #endif

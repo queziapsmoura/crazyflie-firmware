@@ -38,19 +38,20 @@ int main() {
       flag = false;
       att_est.estimate();
       ver_est.predict(ver_cont.f_t);
-      if (flag_range) {
-      {
-        flag_range = false;
-        ver_est.correct(att_est.phi, att_est.theta);
+      if (flag_range) 
+        {
+          flag_range = false;
+          ver_est.correct(att_est.phi, att_est.theta);
+        }
+        ver_cont.control(z_r, ver_est.z, ver_est.w);
+        att_cont.control(phi_r, theta_r, psi_r, att_est.phi, att_est.theta,
+                         att_est.psi, att_est.p, att_est.q, att_est.r);
+        mixer.actuate(ver_cont.f_t / (cos(att_est.phi) * cos(att_est.theta)),
+                      att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi);
       }
-      ver_cont.control(z_r, ver_est.z, ver_est.w);
-      att_cont.control(phi_r, theta_r, psi_r, att_est.phi, att_est.theta,
-                       att_est.psi, att_est.p, att_est.q, att_est.r);
-      mixer.actuate(ver_cont.f_t / (cos(att_est.phi) * cos(att_est.theta)),
-                    att_cont.tau_phi, att_cont.tau_theta, att_cont.tau_psi);
     }
+    // Disarm motors and end program
+    mixer.disarm();
+    while (true);
   }
-  // Disarm motors and end program
-  mixer.disarm();
-  while (true);
-}
+

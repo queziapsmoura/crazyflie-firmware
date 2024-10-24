@@ -16,7 +16,7 @@ void VerticalEstimator ::predict(float f_t)
     z = z + w*dt_v;
     if (z>0.05)
     {
-        w = w +(-g+f_t/m)*dt_v;
+//        w = w +(-g+f_t/m)*dt;
     }
 }
 // Correct vertical position and velocity with measurement
@@ -25,6 +25,6 @@ void VerticalEstimator ::correct(float phi, float theta) {
   if (range.d < 2.0) {
     float z_m = range.d*cos(phi)*cos(theta);
     z = z + l2_v*dt_v*(z_m - z);
-    w = w +l1_v*dt_v*(z_m -z);
+    w = w + l1_v*dt_v*(z_m -z);
   }
 }
