@@ -13,8 +13,6 @@ Ticker tic, tic_range;
 
 // Interrupt flag and counter variables
 bool flag, flag_range;
-<<<<<<< HEAD
-
 // Callback functions
 void callback() { flag = true; }
 void callback_range() { flag_range = true; }
