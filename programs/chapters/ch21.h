@@ -1,6 +1,5 @@
-#include "crazyflie.h "
-#include "mbed.h "
-
+#include "crazyflie.h"
+#include "mbed.h"
 
 // Crazyflie controller objects
 Mixer mixer;
@@ -14,15 +13,15 @@ Ticker tic, tic_range;
 
 // Interrupt flag and counter variables
 bool flag, flag_range;
+<<<<<<< HEAD
 
 // Callback functions
 void callback() { flag = true; }
 void callback_range() { flag_range = true; }
-
 // Main program
 int main() {
   // Set references
-  float z_r = 0.5;
+  float z_r = 1.0;
   float phi_r = 0.0;
   float theta_r = 0.0;
   float psi_r = 0.0;
@@ -31,7 +30,7 @@ int main() {
   ver_est.init();
   // Initialize interrupts
   tic.attach(&callback, dt);
-  tic_range.attach(&callback_range, dt_v); //dt_v (dt_range)
+  tic_range.attach(&callback_range, dt_v);
   // Arm motors and run controller while stable
   mixer.arm();
   while (abs(att_est.phi) <= pi / 4.0 && abs(att_est.theta) <= pi / 4.0 &&
@@ -42,6 +41,7 @@ int main() {
       att_est.estimate();
       ver_est.predict(ver_cont.f_t);
       if (flag_range) {
+      {
         flag_range = false;
         ver_est.correct(att_est.phi, att_est.theta);
       }
