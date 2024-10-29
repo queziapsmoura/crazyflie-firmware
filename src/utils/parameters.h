@@ -47,7 +47,9 @@ const float kd_psi = 2.0*zeta_phi*wn_psi;
 // Estimador  Vertical
 const float wc_v = 10.0;
 const float zeta_v = sqrt(2.0)/2.0;
+
 const float dt_v = 50.0e-3;
+
 const float l1_v = wc_v*wc_v;
 const float l2_v = 2.0*zeta_v*wc_v;
 
@@ -58,5 +60,8 @@ const float zeta_ver = abs(log(OS_ver))/(sqrt(pi*pi+log(OS_ver)*log(OS_ver)));
 const float wn_ver = 4.0/(Ts_ver*zeta_ver);
 const float kp_ver = wn_ver*wn_ver;
 const float kd_ver = 2.0*zeta_ver*wn_ver;
+
+// Estimador Vertical
+const
 
 #endif
