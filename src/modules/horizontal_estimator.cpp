@@ -29,11 +29,9 @@ void HorizontalEstimator:: correct (float phi, float theta, float p, float q, fl
     float den = cos(phi)*cos(theta);
     if (den>0.5){
         float d = z/den;
-        float px = flow.px;
-        float py = flow.py;
         flow.read();
-        float u_m = (sigma*px - q)*d;
-        float v_m = (sigma*py + q)*d;
+        float u_m = (sigma*flow.px + q)*d;
+        float v_m = (sigma*flow.py - p)*d;
         u = u + l_h*dt*(u_m-u);
         v = v + l_h*dt*(v_m-v);
     }

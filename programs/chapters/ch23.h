@@ -36,7 +36,7 @@ int main() {
       if (flag_range) {
         flag_range = false;
         ver_est.correct(att_est.phi, att_est.theta);
-        serial.printf("x [m ]:%6.2 f | y [m ]:%6.2 f | u [m/s ]:%6.2 f | v "
+        serial.printf("x [m ]:%6.2f | y [m ]:%6.2f | u [m/s ]:%6.2f | v "
                       "[m/s ]:%6.2f \n",
                       hor_est.x, hor_est.y, hor_est.u, hor_est.v);
       }

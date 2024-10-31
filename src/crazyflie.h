@@ -21,5 +21,6 @@
 #include "modules/vertical_controller.h"
 
 #include "modules/horizontal_estimator.h"
+#include "modules/horizontal_controller.h"
 
 #endif

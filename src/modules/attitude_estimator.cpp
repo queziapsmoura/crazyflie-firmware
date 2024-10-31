@@ -45,7 +45,7 @@ void AttitudeEstimator::estimate ()
     //phi = phi_g;
     //phi = (1-alpha)*phi_g;
 
-    phi = (1-alpha)*phi_g + alpha*phi_a;
-    theta = (1-alpha)*theta_g + alpha*theta_a;
+    phi = (1.0-alpha)*phi_g + alpha*phi_a;
+    theta = (1.0-alpha)*theta_g + alpha*theta_a;
     psi = psi_g;
 }

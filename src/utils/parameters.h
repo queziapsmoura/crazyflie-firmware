@@ -62,13 +62,21 @@ const float kp_ver = wn_ver*wn_ver;
 const float kd_ver = 2.0*zeta_ver*wn_ver;
 
 // Estimador Horizontal
-const float W = 420; // Pixels
-const float gama =  42; // Ângulo de visão
-const float sigma = 2*tan(gama/2)/W*dt;
+const float W = 420.0; // Pixels
+const float gama =  42.0*pi/180.0; // Ângulo de visão
+const float sigma = 2.0*tan(gama/2.0)/(W*dt);
 
 
-const float wc_h = 50; // rad/s - Frequência de corte Estimador Horizontal
+const float wc_h = 50.0; // rad/s - Frequência de corte Estimador Horizontal
 const float l_h = wc_h; // Ganho horizontal
 const float dt_h = 50.0e-3;
+
+//Controlador Horizontal:
+const float Ts_hor = 2.0;
+const float OS_hor = 0.005;
+const float zeta_hor = abs(log(OS_ver))/(sqrt(pi*pi+log(OS_ver)*log(OS_ver)));
+const float wn_hor = 4.0/(Ts_ver*zeta_ver);
+const float kp_hor = wn_ver*wn_ver;
+const float kd_hor = 2.0*zeta_ver*wn_ver;
 
 #endif
