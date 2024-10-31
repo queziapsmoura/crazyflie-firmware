@@ -61,7 +61,14 @@ const float wn_ver = 4.0/(Ts_ver*zeta_ver);
 const float kp_ver = wn_ver*wn_ver;
 const float kd_ver = 2.0*zeta_ver*wn_ver;
 
-// Estimador Vertical
-const
+// Estimador Horizontal
+const float W = 420; // Pixels
+const float gama =  42; // Ângulo de visão
+const float sigma = 2*tan(gama/2)/W*dt;
+
+
+const float wc_h = 50; // rad/s - Frequência de corte Estimador Horizontal
+const float l_h = wc_h; // Ganho horizontal
+const float dt_h = 50.0e-3;
 
 #endif

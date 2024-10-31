@@ -20,4 +20,6 @@
 #include "modules/vertical_estimator.h"
 #include "modules/vertical_controller.h"
 
+#include "modules/horizontal_estimator.h"
+
 #endif
