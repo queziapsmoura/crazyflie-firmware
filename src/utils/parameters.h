@@ -54,7 +54,7 @@ const float l1_v = wc_v*wc_v;
 const float l2_v = 2.0*zeta_v*wc_v;
 
 // Controle Vertical
-const float Ts_ver = 1.0;
+const float Ts_ver = 2.0;
 const float OS_ver = 0.005;
 const float zeta_ver = abs(log(OS_ver))/(sqrt(pi*pi+log(OS_ver)*log(OS_ver)));
 const float wn_ver = 4.0/(Ts_ver*zeta_ver);
