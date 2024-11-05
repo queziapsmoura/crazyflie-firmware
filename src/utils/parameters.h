@@ -69,7 +69,6 @@ const float sigma = 2.0*tan(gama/2.0)/(W*dt);
 
 const float wc_h = 50.0; // rad/s - Frequência de corte Estimador Horizontal
 const float l_h = wc_h; // Ganho horizontal
-const float dt_h = 50.0e-3;
 
 //Controlador Horizontal:
 const float Ts_hor = 2.0;

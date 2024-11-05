@@ -24,7 +24,7 @@ void VerticalEstimator ::correct(float phi, float theta) {
   range.read();
   if (range.d < 2.0) {
     float z_m = range.d*cos(phi)*cos(theta);
-    z = z + l2_v*dt_v*(z_m - z);
     w = w + l1_v*dt_v*(z_m - z);
+    z = z + l2_v*dt_v*(z_m - z);
   }
 }

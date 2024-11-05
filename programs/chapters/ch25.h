@@ -16,13 +16,13 @@ Ticker tic, tic_range;
 bool flag, flag_range;
 
 // Callback functions
-void callback() { flag = true; }
+//void callback() { flag = true; }
 void callback_range() { flag_range = true; }
 
 // Main program
-int main() {
+//int main() {
   // Set references
-  float z_r = 0.5;
+  float z_r = 1.0;
   float x_r = 0.0;
   float y_r = 0.0;
   float psi_r = 0.0;
@@ -32,7 +32,7 @@ int main() {
   hor_est.init();
   // Initialize interrupts
   tic.attach(&callback, dt);
-  tic_range.attach(&callback_range, dt_h);
+  tic_range.attach(&callback_range, dt_v);
   // Arm motors and run controller while stable
   mixer.arm();
   while (abs(att_est.phi) <= pi / 4.0 && abs(att_est.theta) <= pi / 4.0 &&
