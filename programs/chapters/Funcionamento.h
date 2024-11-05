@@ -47,7 +47,7 @@ int main() {
   tempo.start();
   while (abs(att_est.phi) <= pi / 4.0 && abs(att_est.theta) <= pi / 4.0 &&
          abs(att_est.p) <= 4.0 * pi && abs(att_est.q) <= 4.0 * pi &&
-         abs(att_est.r) <= 4.0 * pi) {
+         abs(att_est.r) <= 4.0 * pi && t < td+tv+tp+2.0) {
     if (flag) {
       flag = false;
       t = tempo.read();
@@ -60,17 +60,11 @@ int main() {
         z_r = h;
         x_r = d / tv * (t - td);
         y_r = 0.0;
-      } else if (t < td + tv + tp) {
-        z_r = -(h / tp) * (t - td - tp - tv) - 0.15;
+      } else {
+        z_r = -(h / tp) * (t - td - tp - tv);
         x_r = d;
         y_r = 0.0;
-         }
-        else if (t> td + tv + tp)
-        {
-            mixer.disarm();
         }
-     
-
       att_est.estimate();
       ver_est.predict(ver_cont.f_t);
       if (flag_range) {
@@ -93,5 +87,6 @@ int main() {
   }
   // Disarm motors and end program
   while (true)
+  mixer.disarm()
     ;
 }
