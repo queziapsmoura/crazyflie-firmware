@@ -20,4 +20,5 @@
 
 // #include "programs/chapters/ch19.h"
 // #include "programs/chapters/ch21.h"
-#include "programs/chapters/ch25.h"
+//#include "programs/chapters/ch25.h"
+#include "programs/chapters/Funcionamento.h"
