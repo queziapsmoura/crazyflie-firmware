@@ -32,8 +32,8 @@ int main() {
   float td = 2.0;
   float tv = 5.0;
   float tp = 2.0;
-  float h = 1.0;
-  float d = 2.0;
+  float h = 1;
+  float d = 1.5;
   // Initialize estimators objects
   att_est.init();
   ver_est.init();
