@@ -31,7 +31,7 @@ int main() {
   // Set Tempos
   float td = 2.0;
   float tv = 5.0;
-  float tp = 2.0;
+  float tp = 2.5;
   float h = 1;
   float d = 1.5;
   // Initialize estimators objects
@@ -47,7 +47,7 @@ int main() {
   tempo.start();
   while (abs(att_est.phi) <= pi / 4.0 && abs(att_est.theta) <= pi / 4.0 &&
          abs(att_est.p) <= 4.0 * pi && abs(att_est.q) <= 4.0 * pi &&
-         abs(att_est.r) <= 4.0 * pi && t < td+tv+tp+2.0) {
+         abs(att_est.r) <= 4.0 * pi && t < td+tv+tp+0.75) {
     if (flag) {
       flag = false;
       t = tempo.read();
